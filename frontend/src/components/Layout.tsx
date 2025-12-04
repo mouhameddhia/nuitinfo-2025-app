@@ -1,7 +1,7 @@
-﻿import { Outlet, Link } from ''react-router-dom''
-import { useAuthStore } from ''@/store/authStore''
-import { ThemeToggle } from ''./ThemeToggle''
-import styles from ''./Layout.module.css''
+﻿import { Outlet, Link } from 'react-router-dom'
+import { useAuthStore } from '@/store/authStore'
+import { ThemeToggle } from './ThemeToggle'
+import styles from './Layout.module.css'
 
 function Layout() {
   const { isAuthenticated, user, logout } = useAuthStore()

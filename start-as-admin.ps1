@@ -20,8 +20,8 @@ Write-Host "  Docker Compose - Administrator Mode   " -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
-# Set location
-$projectPath = "C:\Users\abidi\OneDrive\Bureau\project_nuit_de_l_info"
+# Set location to script directory
+$projectPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $projectPath
 Write-Host "Working directory: $projectPath" -ForegroundColor Gray
 Write-Host ""

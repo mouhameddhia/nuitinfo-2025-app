@@ -18,7 +18,7 @@ Write-Host "  Database Fix - Administrator Mode     " -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
-$projectPath = "C:\Users\abidi\OneDrive\Bureau\project_nuit_de_l_info"
+$projectPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $projectPath
 
 Write-Host "[1/5] Stopping all containers..." -ForegroundColor Yellow
