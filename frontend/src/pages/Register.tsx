@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { authService } from '@/services/authService'
+import { Button } from '@/components/LoadingComponents'
 import styles from './Auth.module.css'
 
 function Register() {
@@ -28,9 +30,12 @@ function Register() {
 
     try {
       await authService.register(formData)
+      toast.success('Account created successfully! Please log in. ✅')
       navigate('/login')
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Registration failed. Please try again.')
+      const message = err.response?.data?.detail || 'Registration failed. Please try again.'
+      setError(message)
+      toast.error(message)
     } finally {
       setIsLoading(false)
     }
@@ -95,9 +100,9 @@ function Register() {
             />
           </div>
 
-          <button type="submit" disabled={isLoading} className={styles.submitBtn}>
-            {isLoading ? 'Creating account...' : 'Create Account'}
-          </button>
+          <Button type="submit" isLoading={isLoading} variant="primary" className={styles.submitBtn}>
+            Create Account
+          </Button>
         </form>
 
         <p className={styles.switchAuth}>

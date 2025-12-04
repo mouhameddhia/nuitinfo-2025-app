@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { useAuthStore } from '@/store/authStore'
+import { Button } from '@/components/LoadingComponents'
 import styles from './Auth.module.css'
 
 function Login() {
@@ -18,9 +20,12 @@ function Login() {
 
     try {
       await login(username, password)
+      toast.success('Welcome back! 👋')
       navigate('/dashboard')
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Login failed. Please try again.')
+      const message = err.response?.data?.detail || 'Login failed. Please try again.'
+      setError(message)
+      toast.error(message)
     } finally {
       setIsLoading(false)
     }
@@ -57,9 +62,9 @@ function Login() {
             />
           </div>
 
-          <button type="submit" disabled={isLoading} className={styles.submitBtn}>
-            {isLoading ? 'Signing in...' : 'Sign In'}
-          </button>
+          <Button type="submit" isLoading={isLoading} variant="primary" className={styles.submitBtn}>
+            Sign In
+          </Button>
         </form>
 
         <p className={styles.switchAuth}>

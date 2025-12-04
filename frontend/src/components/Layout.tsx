@@ -1,16 +1,18 @@
-import { Outlet, Link } from 'react-router-dom'
-import { useAuthStore } from '@/store/authStore'
-import styles from './Layout.module.css'
+﻿import { Outlet, Link } from ''react-router-dom''
+import { useAuthStore } from ''@/store/authStore''
+import { ThemeToggle } from ''./ThemeToggle''
+import styles from ''./Layout.module.css''
 
 function Layout() {
   const { isAuthenticated, user, logout } = useAuthStore()
 
   return (
     <div className={styles.layout}>
+      <ThemeToggle />
       <header className={styles.header}>
         <nav className={styles.nav}>
           <Link to="/" className={styles.logo}>
-            Nuit de l'Info 2025
+            Nuit de l''Info 2025
           </Link>
           <div className={styles.navLinks}>
             {isAuthenticated ? (
@@ -34,7 +36,7 @@ function Layout() {
         <Outlet />
       </main>
       <footer className={styles.footer}>
-        <p>&copy; 2025 Nuit de l'Info. Built with FastAPI + React + TypeScript</p>
+        <p>&copy; 2025 Nuit de l''Info. Built with FastAPI + React + TypeScript</p>
       </footer>
     </div>
   )
